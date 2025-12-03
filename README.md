@@ -4,6 +4,8 @@
 
 [[_TOC_]]
 
+![Alt text](path/to/your/image.jpg "Optional Title")
+
 # 2021-02-05 - Discussion with Professor Schuh
 
 Professor Schuh gave us the idea to use piezo resistors or Velostat to perform the weight/pressure sensing that we need. Additionally, the tilt sensing probably won’t be necessary - we can correspond the rear left wheel with the front left wheel and rear right wheel with the front right wheel, as those pairs of wheels should be spinning at roughly the same velocity during turning. This simplifies our design.
