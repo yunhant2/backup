@@ -4,7 +4,7 @@
 
 [[_TOC_]]
 
-![Alt text](path/to/your/image.jpg "Optional Title")
+![Alt text](Screenshot 2025-12-03 143943.png "Optional Title")
 
 # 2021-02-05 - Discussion with Professor Schuh
 
