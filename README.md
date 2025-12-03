@@ -2,8 +2,6 @@
 
 # Alex Worklog
 
-[[_TOC_]]
-
 ![Alt text](https://github.com/yunhant2/backup/blob/main/Screenshot%202025-12-03%20143943.png "Optional Title")
 
 # 2021-02-05 - Discussion with Professor Schuh
