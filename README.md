@@ -1,85 +1,101 @@
-# backup
+# Yunhan Tian Worklog
 
-# Alex Worklog
+# 2025-09-23 - Post proposal review
 
-![Alt text](https://github.com/yunhant2/backup/blob/main/Screenshot%202025-12-03%20143943.png "Optional Title")
+After the proposal review, we now have a general idea of our project. We want to build an antweight 3D-printing battlebot. As a group, we agreed that our battlebot will consist of 4 subsystems: the drivetrain subsystem, the weapon subsystem, the control subsystem, and the power subsystem. We agreed that our weapon system would be a shovel, trying to lift up the opponent's battlebot. We calculated the required torque for our weapon subsystem servo to be able to lift a 2lb weight. We calculated the battery requirement for our battlebot to last 2 minutes. We also determined the designed capacity, including the theoretical runtime, speed capacity, and the required torque. 
 
-# 2021-02-05 - Discussion with Professor Schuh
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/calculations.png)
 
-Professor Schuh gave us the idea to use piezo resistors or Velostat to perform the weight/pressure sensing that we need. Additionally, the tilt sensing probably won’t be necessary - we can correspond the rear left wheel with the front left wheel and rear right wheel with the front right wheel, as those pairs of wheels should be spinning at roughly the same velocity during turning. This simplifies our design.
+# 2025-09-30 - PCB schematics
 
-# 2021-02-10 - Parts Updates
+For the PCB design, I am responsible for the power subsystem design. The schematics I design consist of a buck converter converting 12V to 3.3V, providing a voltage supply for the control subsystem. I also added some circuit protection measures to prevent our PCB from being damaged by any unexpected current flow. We did not end up using my design, but it helps me keep track of our PCB design.
 
-Currently, I am looking at Dual VESC options that can simplify our design, minimize space.
-Here are some examples:
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/power.png)
 
-![](esc1.png)
+# 2025-10-06 - Breadboard demo 1
 
-[link](https://flipsky.net/collections/electronic-products/products/dual-fsesc6-6-based-upon-vesc6-with-aluminum-heatsink)
+For the breadboard demo, we agreed that we want to show a drivetrain motor being controlled by commands. Since the purpose of this demo is to mimic a working PCB to some extent, we decided to use a development board to execute our Arduino code and a ready-to-use H-bridge chip to enable the motor, making the motor able to accept commands to change its spinning direction once we press a button, which corresponds with our battlebot going straight and going back. I was mainly figuring out the circuit wiring while Jimmy and Mig figured out a simple version of Arduino code for us to control the motor. 
 
-This one has dual MCUs, with a physical switch to include or disclude the CAN connection
-between both of the VESCs.
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/demo1.png)
 
-![](esc2.png)
+# 2025-10-12 - PCB v1 completed
 
-[link](https://massivestator.com/products/focbox-unity-dual-motor-controller)
+We finished the first version of the PCB design.
 
-This one has a single MCU that acts for both motors.
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/pcbv1.png)
 
-I am currently speaking with Loaded Boards, a longboard deck and skateboard wheel company that Boosted had a business relationship with. They are willing to send a B-grade deck and wheels at a lower price. Wheel durometer options are 77a, 80a, 83a. The lower the durometer number, the softer the
-wheel urethane.
+# 2025-10-20 3D printing structure
 
-After discussions with the team, we decided on the hardest wheel option, 83a, as it would slip easier than the softer wheels. We want to make sure we can demonstrate traction control in our project.
+We sent the PCB purchasing request. We decided that while Jimmy works on implementing the Bluetooth control, Mig and I can have our 3D printing structure ready for the upcoming breadboard demo 2. I designed the main structure, while Mig designed the shovel. We printed out everything, and they overall work expected.
 
-For weight sensing, I also came across a flexiforce sensor that we may consider using. The board will weigh about 20 pounds, we ideally would like a range of double that. This flexiforce sensor is high on my list.
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/3dstr1.jpg)
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/3dstr2.jpg)
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/shovel.png)
 
-![](flexiforce.png)
+# 2025-10-28 - Breadboard demo 2
 
-[link](https://www.tekscan.com/products-solutions/force-sensors/a401?tab=specifications-performance)
+For breadboard demo 2, Jimmy successfully implemented the Bluetooth connection. We were also able to modify the code and make progress on expanding the control feature to 2 motors instead of 1, tuning the motor and the corresponding code to make turning directions possible, also the activation button, which needs a PWM signal, to control the weapon servo. We also realized that the 3D printing structures would require a lot more time than anticipated. We decided to split up the work. Jimmy and Mig would be working on the PCB soldering/testing/modifying, and I will be designing all 3D printing structures and improving through iterations. 
 
-# 2021-02-12 - Acquiring a Battery
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/demo2.png)
 
-I have contacted several custom battery builders in the esk8 (custom electric longboard builders) forum, located [here](https://forum.esk8.news/).  Builder Zach Tetra from [Black Fox Builds](https://forum.esk8.news/t/black-fox-boards-east-coast-battery-building-services/37402) has the following pair of 6s4p batteries that he can send immediately:
+# 2025-10-31 - 3D printing structure iteration 1
 
-![](blackfox_battery.png)
+Because I realized that I would not be able to fit all the components(PCB, battery, motors, etc.) into the small hole reserved for the wheels of the sealed 3D printing structure we had, I performed the first iteration of the 3D printing structure, which I divided the whole structure into 2 subparts: the shell and the bottom plate. I also arranged the positioning space for the back wheels, battery, PCB, and the front drivetrain motors (PCB would be screwed to the top of the shell). I printed out the shell and the bottom plate, and they both worked as expected. I did not design the positioning hole for the weapon servo since I had a hard time picturing how the servo would work, and the servo did not arrive, so I did not have the exact dimensions of the servo. I decided to do that on the next iteration. 
 
-For our project, I would prefer a 12s battery for adequate performance. The pack above is made up of Samsung 30Q cells, I found more info [here](https://lygte-info.dk/review/batteries2012/Samsung%20INR18650-30Q%203000mAh%20(Pink)%20UK.html). We can convert the 6s4p pack into a 12s2p pack, which will be nearly 200Whr.
-This will be plenty, for up to 10 miles of range. I have never worked on batteries before. When researching how to do so, I found this over-an-hour-long video [here]( https://www.youtube.com/watch?v=7QjO90LG67g), that clearly depicts and describes everything required to safely build a reliable battery pack.
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/v1shell.png)
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/v1bottomplate.png)
 
-I will need access to a spot welder to complete this - we’ve reached out to Illini Solar Car, as they have claimed the spot welder on campus.
+# 2025-11-04 - Group communication
 
-# 2021-02-18 - Battery Update
+During our group meeting, I updated Jimmy and Mig about iteration 1, and I learned that the PCB had arrived, and they had soldered the components and would be testing it. Also, the servo motor arrived, and I got the dimensions of the servo and had a better understanding of how the servo functions.
 
-Received the pair of 6s4p batteries, along with battery building supplies such as a Smart BMS, nickel strips, fishpaper, 10 gauge wire, and more. Upon closer inspection, splitting the 6s4p pack into a 12s2p pack is difficult, as there is no leverage to remove the existing H-shaped nickel strips.
+# 2025-11-08 - 3D printing structure iteration 2
 
-The pair of 6s4p packs take up a lot less space than I expected. It would be easier to make a 12s4p pack out of them instead, which will provide us the same power as I required from earlier at nearly 500 Whr. Additionally, I have gotten in contact with a coworker who has a battery spot welder I can use.
+With the new servo information, I added the position hole on the bottom plate for the servo. I redesigned our shovel since we agreed that the original shovel was too big and was not strong enough. I mounted 2 holes on the shovel stick to ensure the screws could pass through and connect with the servo motor arm. I also designed a converter for the connection between the drivetrain motor and the wheels since the shaft hole on the wheels was too small to fit our drivetrain motor. I printed out everything I redesigned and found out that the dimension information given is incorrect; the servo will not fit the position hole. The converter was also too small on the motor side. The shovel works as expected.
 
-Once I have planned out the build and assembled the materials, we should be good to go to complete the battery.
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/v2.png)
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/v2con.png)
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/v2shovel.png)
 
-# 2021-02-24 - Investigation acquiring RPM data from VESCs
+# 2025-11-16 - 3D printing structure iteration 3
 
-I have done some investigating of the VESC hardware and software and discovered that you can query them for RPM telemetry data. This removes the need for us to develop RPM sensing
-around the motorized wheels.
+I realized that we needed the shovel to be touching the ground for it to be able to lift anything. After I fixed the known issue from iteration 2, I made the position hole even deeper down the bottom plate. I also created an additional space in the front for the servo arm to extend without making contact with any other components. Additionally, I made the shovel shorter and narrower to enhance torque. I printed out everything and tested it. They all worked as expected.
 
-To accomplish this however, we may need to talk to each VESC individually. Having a dual VESC is convenient, but this may interfere with our ability to query data from them properly. Some dual VESCs have dual MCUs, other more recent designs have single MCUs as shown earlier in this journal.
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/v3-1.jpg)
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/v3-2.jpg)
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/v3-3.jpg)
 
-# 2021-03-01 - Parts update
+# 2025-11-19 - 3D printing structure iteration 4
 
-From further discussions about the issue of communicating to both VESCs individually or to a ‘master’ VESC to both, we have decided to go with a pair of single VESCs. For example, we could attach a CANBUS cable between the pair of VESCs in order to allow them to communicate with each other, or simply split two PPM signals to pass throttle information individually, among various other choices. In other words, the VESCs can work in tandem with one another or can be independent from each other.
+I realized the space reserved for the drivetrain motors is not compatible with our motors, so I made an adjustment to the bottom plate.
 
-I have assembled a significant portion of the board at this point, as seen here in this picture below:
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/v4.png)
 
-![](parts_update.png)
+# 2025-11-21 - Mock demo assembly 
 
-Some issues:
+For the mock demo, since the newly designed PCB had not arrived yet, we decided to build a prototype using a breadboard that consisted of chip modules such as the ESP32 development board, the Adafruit H-bridge module, and the 3.3V and 5V buck converter module. The built prototype showed all functionalities worked as intended.
 
-- The motor pulley is scraping on the motor mount. This is an issue of tolerances, as the
-motor mount I am using is 6mm wide and the Motor shaft has a tolerance of 6.2mm +-
-0.5mm. In theory, we should have 0.2mm of space, but the margin of error was not in our
-favor.
-  ![](motor_pulley_scraping.png)
-- The threads on the ends of the trucks are not deep enough. We need bearing spacers to
-push the wheel out.
-  ![](bearing_spacer.png)
-  
-  
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/mockdemo1.jpg)
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/mockdemo2.jpg)
+
+# 2025-11-27 - 3D printing structure iteration 5
+
+I followed the advice given by our TA during the mock demo that we might want to improve the professional packaging aspect of the design. As a result, I added some screw holes on all the edges of the shell. I also made the drivetrain converter bigger. I also made some changes to the shell PCB position space because it has some conflicts with our new PCB. 
+
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/v5-1.jpg)
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/v5-2.jpg)
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/v5-3.png)
+
+# 2025-11-29 - Final demo assembly
+
+We assembled everything with the newly arrived PCB. We noticed that the code that was working on the development board was no longer working. We found out that it was because the defined PIN in the PCB design did not correspond to the same GPIO pin in the code. I also found that our PCB had some issues with the power distribution. We had to put a buck converter module in parallel with the PCB to resolve the problem. We tested everything, and they all worked as expected except that we could not remove a screw connecting the servo arm and the shovel, making the shovel non-functional.
+
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/final1.jpg)
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/final2.jpg)
+
+# 2025-12-02 - Final demo preparation
+
+We ended up going to the machine shop for help, and they removed the screw for us. Mig also redesigned the front wheels, so we no longer needed the converter(the converters were easy to break). We reassembled our battlebot, and all components worked as expected. We were ready for the final demo.
+
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/ready1.jpg)
+![Alt text](https://github.com/YanhaoYang2/ECE-445-notebooks/blob/main/notebooks/Yunhan%20Tian/ready2.jpg)
